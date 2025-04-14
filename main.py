@@ -17,6 +17,11 @@ my_posts = [
     {"title": "The Art of Cooking", "content": "Discover the joy of culinary creations with our step-by-step guides to mastering delicious recipes.", "id": 2}
 ]
 
+def find_post(id: int):
+    for p in my_posts:
+        if p['id'] == id:
+            return p
+
 @app.get("/")
 def read_root():
     return {"Hello": "Lil"}
@@ -24,6 +29,12 @@ def read_root():
 @app.get("/posts")
 def get_posts():
     return {"data": my_posts}
+
+@app.get("/posts/{id}")
+def get_post(id):
+    post = find_post(int(id))
+    print(post)
+    return {"data": post}
 
 @app.post("/posts")
 def create_post(post: Post):
