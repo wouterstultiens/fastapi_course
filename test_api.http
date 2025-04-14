@@ -1,0 +1,12 @@
+### GET request to example server
+GET http://127.0.0.1:8000/
+
+###
+
+POST http://localhost:8000/createpost
+Content-Type: application/json
+
+{
+  "title": "Your Post Title",
+  "content": "Your Post Content"
+}
