@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, Response, status
 from pydantic import BaseModel
 from random import randrange
 
@@ -56,4 +56,3 @@ def delete_post(id: int):
             detail = f"Post with id {id} was not found"
         )
     my_posts.remove(post)
-    return {"detail": f"Post with id {id} successfully deleted"}
