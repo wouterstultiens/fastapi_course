@@ -1,0 +1,21 @@
+services:
+  socials-db:
+    image: postgres
+    ports:
+      - "5443:5443"
+    restart: always
+    environment:
+      POSTGRES_USER: a
+      POSTGRES_PASSWORD: a
+      POSTGRES_DB: posts-db
+    command: -p 5443
+  socials-pgadmin:
+    image: dpage/pgadmin4:7.7
+    environment:
+      PGADMIN_DEFAULT_EMAIL: a@a.com
+      PGADMIN_DEFAULT_PASSWORD: 0
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    depends_on:
+      - socials-db
