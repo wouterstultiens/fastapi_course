@@ -57,7 +57,7 @@ def delete_post(id: int):
         )
     my_posts.remove(post)
 
-@app.put("/posts/{id}", status_code=status.HTTP_201_CREATED)
+@app.put("/posts/{id}")
 def update_post(id: int, post: Post):
     index, _ = find_post(id)
     if index == None:
