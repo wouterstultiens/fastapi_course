@@ -59,13 +59,13 @@ def delete_post(id: int):
 
 @app.put("/posts/{id}", status_code=status.HTTP_201_CREATED)
 def update_post(id: int, post: Post):
-    post_dict = dict(post)
     index, _ = find_post(id)
     if index == None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail = f"Post with id {id} was not found"
         )
+    post_dict = dict(post)
     post_dict['id'] = id
     my_posts[index] = post_dict
     return {"data": post_dict}
