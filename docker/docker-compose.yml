@@ -2,7 +2,7 @@ services:
   socials-db:
     image: postgres
     ports:
-      - "5443:5443"
+      - "127.0.0.1:5443:5443"
     restart: always
     environment:
       POSTGRES_USER: a
