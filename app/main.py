@@ -1,6 +1,4 @@
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException, Response, status
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from random import randrange
 import psycopg2
@@ -14,7 +12,14 @@ class Post(BaseModel):
     published: bool = True
 
 try:
-    conn = psycopg2.connect(host='172.18.0.1', port=5443, database='posts-db', user='a', password='a', cursor_factory=RealDictCursor)
+    conn = psycopg2.connect(
+        host='127.0.0.1', 
+        port=5443, 
+        database='posts-db', 
+        user='a', 
+        password='a', 
+        cursor_factory=RealDictCursor
+    )
     cursor = conn.cursor()
     print("Database connection was successful")
 except Exception as error:
